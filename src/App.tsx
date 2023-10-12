@@ -1,11 +1,7 @@
-import './App.css'
+import Keypad from "./components/Keypad/Keypad";
 
 function App() {
-
-  return (
-    <>
-    </>
-  )
+	return <Keypad />;
 }
 
-export default App
+export default App;

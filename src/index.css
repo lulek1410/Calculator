@@ -8,12 +8,15 @@
 
 	--option-key-bg-1: hsl(225, 21%, 49%);
 	--option-key-shadow-1: hsl(224, 28%, 35%);
+	--option-key-active-1: hsl(224, 51%, 76%);
 
 	--result-key-bg-1: hsl(6, 63%, 50%);
 	--result-key-shadow-1: hsl(6, 70%, 34%);
+	--result-key-active-1: hsl(6, 93%, 67%);
 
 	--main-key-bg-1: hsl(30, 25%, 89%);
 	--main-key-shadow-1: hsl(28, 16%, 65%);
+	--main-key-active-1: #ffffff;
 
 	--text-1: hsl(221, 14%, 31%);
 
@@ -47,5 +50,26 @@
 	--main-key-shadow-3: hsl(290, 70%, 36%);
 
 	--text-3: hsl(52, 100%, 62%);
-  --text-options-3: hsl(198, 20%, 13%);
+	--text-options-3: hsl(198, 20%, 13%);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	display: grid;
+	place-items: center;
+	min-height: 100vh;
+	overflow-x: hidden;
+	background-color: var(--main-bg-1);
+}
+
+button,
+div {
+	font-size: 32px;
+	font-family: "League Spartan", sans-serif;
+	font-weight: 700;
 }
