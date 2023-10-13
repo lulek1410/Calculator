@@ -51,6 +51,10 @@
 
 	--text-3: hsl(52, 100%, 62%);
 	--text-options-3: hsl(198, 20%, 13%);
+
+	font-size: 32px;
+	font-family: "League Spartan", sans-serif;
+	font-weight: 700;
 }
 
 * {
@@ -67,8 +71,7 @@ body {
 	background-color: var(--main-bg-1);
 }
 
-button,
-div {
+button {
 	font-size: 32px;
 	font-family: "League Spartan", sans-serif;
 	font-weight: 700;

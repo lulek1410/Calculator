@@ -2,9 +2,10 @@ import styled from "@emotion/styled";
 
 const StyledScreen = styled.div`
 	background-color: var(--screen-bg-1);
-  padding: 30px 20px;
-  border-radius: 8px;
+	padding: 30px 20px;
+	border-radius: 8px;
 
+	font-size: 1.6rem;
 	text-align: end;
 	color: white;
 `;
