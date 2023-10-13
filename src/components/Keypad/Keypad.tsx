@@ -10,7 +10,7 @@ const ButtonsGrid = styled.div`
 	display: grid;
 	grid-template-rows: repeat(5, 1fr);
 	grid-template-columns: repeat(4, 1fr);
-	gap: 25px 22px;
+	gap: max(min(25px, 2vmin), 14px) max(min(22px, 2vmin), 10px);
 `;
 
 type ButtonType = "del" | "reset" | "result";
@@ -31,6 +31,8 @@ const ActionButton = styled(Button)<{ buttonType: ButtonType }>`
 	${({ buttonType }) => buttonType === "result" && "grid-column: 3 / 5"};
 	${({ buttonType }) => buttonType === "reset" && "grid-column: 1 / 3"};
 
+	padding: 4px 0 0 0;
+
 	&:active {
 		background-color: ${({ buttonType }) =>
 			buttonType === "result"
@@ -47,7 +49,9 @@ const Keypad = () => {
 			<NumberButton number={7} />
 			<NumberButton number={8} />
 			<NumberButton number={9} />
-			<ActionButton buttonType="del">DEL</ActionButton>
+			<ActionButton buttonType="del">
+				<div>DEL</div>
+			</ActionButton>
 			<NumberButton number={4} />
 			<NumberButton number={5} />
 			<NumberButton number={6} />
@@ -57,11 +61,15 @@ const Keypad = () => {
 			<NumberButton number={3} />
 			<CalcButton sign="-" />
 			<SeparatorButton>.</SeparatorButton>
-			<NumberButton number={7} />
+			<NumberButton number={0} />
 			<CalcButton sign="/" />
 			<CalcButton sign="x" />
-			<ActionButton buttonType="reset">RESET</ActionButton>
-			<ActionButton buttonType="result">=</ActionButton>
+			<ActionButton buttonType="reset">
+				<div>RESET</div>
+			</ActionButton>
+			<ActionButton buttonType="result">
+				<div>=</div>
+			</ActionButton>
 		</ButtonsGrid>
 	);
 };

@@ -5,7 +5,7 @@ const StyledScreen = styled.div`
 	padding: 30px 20px;
 	border-radius: 8px;
 
-	font-size: 1.6rem;
+	font-size: min(1.6rem, 9.5vmin);
 	text-align: end;
 	color: white;
 `;
