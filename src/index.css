@@ -16,9 +16,11 @@
 
 	--main-key-bg-1: hsl(30, 25%, 89%);
 	--main-key-shadow-1: hsl(28, 16%, 65%);
-	--main-key-active-1: #ffffff;
+	--main-key-active-1: var(--white);
 
-	--text-1: hsl(221, 14%, 31%);
+	--text-key-1: hsl(221, 14%, 31%);
+	--text-result-1: var(--white);
+	--text-screen-1: var(--white);
 
 	/* Theme 2 */
 	--main-bg-2: hsl(0, 0%, 90%);
@@ -27,30 +29,40 @@
 
 	--option-key-bg-2: hsl(185, 42%, 37%);
 	--option-key-shadow-2: hsl(185, 58%, 25%);
+	--option-key-active-2: hsl(185, 41%, 56%);
 
 	--result-key-bg-2: hsl(25, 98%, 40%);
 	--result-key-shadow-2: hsl(25, 99%, 27%);
+	--result-key-active-2: hsl(25, 100%, 61%);
 
 	--main-key-bg-2: hsl(45, 7%, 89%);
 	--main-key-shadow-2: hsl(35, 11%, 61%);
+	--main-key-active-2: var(--white);
 
-	--text-2: hsl(60, 10%, 19%);
+	--text-key-2: hsl(60, 10%, 19%);
+	--text-result-2: var(--white);
+	--text-screen-2: hsl(60, 10%, 19%);
 
 	/* Theme 3 */
 	--main-bg-3: hsl(268, 75%, 9%);
 	--keypad-bg-3: hsl(268, 71%, 12%);
+	--screen-bg-3: hsl(268, 71%, 12%);
 
 	--option-key-bg-3: hsl(281, 89%, 26%);
 	--option-key-shadow-3: hsl(285, 91%, 52%);
+	--option-key-active-3: hsl(280, 56%, 44%);
 
 	--result-key-bg-3: hsl(176, 100%, 44%);
-	--result-key-shadow: hsl(177, 92%, 70%);
+	--result-key-shadow-3: hsl(177, 92%, 70%);
+	--result-key-active-3: hsl(177, 100%, 72%);
 
 	--main-key-bg-3: hsl(268, 47%, 21%);
 	--main-key-shadow-3: hsl(290, 70%, 36%);
+	--main-key-active-3: hsl(267, 54%, 44%);
 
-	--text-3: hsl(52, 100%, 62%);
-	--text-options-3: hsl(198, 20%, 13%);
+	--text-key-3: hsl(52, 100%, 62%);
+	--text-result-3: hsl(198, 20%, 13%);
+	--text-screen-3: hsl(52, 100%, 62%);
 
 	font-size: 32px;
 	font-family: "League Spartan", sans-serif;
@@ -61,15 +73,6 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-}
-
-body {
-	display: grid;
-	place-items: center;
-	min-height: 100vh;
-	overflow-x: hidden;
-	background-color: var(--main-bg-1);
-	padding: 20px;
 }
 
 button {

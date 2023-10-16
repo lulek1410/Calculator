@@ -8,11 +8,11 @@ export const Button = styled.button`
 `;
 
 export const StyledNumberButton = styled(Button)`
-	color: var(--text-1);
-	background-color: var(--main-key-bg-1);
-	box-shadow: 0 3px var(--main-key-shadow-1);
+	color: var(--text-key);
+	background-color: var(--main-key-bg);
+	box-shadow: 0 3px var(--main-key-shadow);
 	&:active {
-		background-color: var(--main-key-active-1);
+		background-color: var(--main-key-active);
 	}
 `;
 

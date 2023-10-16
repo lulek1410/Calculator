@@ -5,7 +5,7 @@ import CalcButton from "./CalcButton";
 const ButtonsGrid = styled.div`
 	padding: 26px 20px;
 	border-radius: 8px;
-	background-color: var(--keypad-bg-1);
+	background-color: var(--keypad-bg);
 
 	display: grid;
 	grid-template-rows: repeat(5, 1fr);
@@ -17,15 +17,14 @@ type ButtonType = "del" | "reset" | "result";
 
 const ActionButton = styled(Button)<{ buttonType: ButtonType }>`
 	background-color: ${({ buttonType }) =>
-		buttonType === "result"
-			? "var(--result-key-bg-1)"
-			: "var(--option-key-bg-1)"};
+		buttonType === "result" ? "var(--result-key-bg)" : "var(--option-key-bg)"};
 	box-shadow: 0 3px
 		${({ buttonType }) =>
 			buttonType === "result"
-				? "var(--result-key-shadow-1)"
-				: "var(--option-key-shadow-1)"};
-	color: var(--white);
+				? "var(--result-key-shadow)"
+				: "var(--option-key-shadow)"};
+	color: ${({ buttonType }) =>
+		buttonType === "result" ? "var(--text-result)" : "var(--white)"};
 	font-size: 22px;
 
 	${({ buttonType }) => buttonType === "result" && "grid-column: 3 / 5"};
@@ -36,8 +35,8 @@ const ActionButton = styled(Button)<{ buttonType: ButtonType }>`
 	&:active {
 		background-color: ${({ buttonType }) =>
 			buttonType === "result"
-				? "var(--result-key-active-1)"
-				: "var(--option-key-active-1)"};
+				? "var(--result-key-active)"
+				: "var(--option-key-active)"};
 	}
 `;
 

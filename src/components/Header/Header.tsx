@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import ThemeSelector from "./ThemeSelector";
 
 const HeaderContainer = styled.div`
-	color: white;
+	color: var(--text-screen);
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 10px;
@@ -11,7 +11,6 @@ const HeaderContainer = styled.div`
 
 const ThemeText = styled.div`
 	font-size: 0.35rem;
-	font-weight: 500;
 `;
 
 const ThemeSelectorContainer = styled.div`
