@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useAppSelector } from "hooks/useAppSelector";
 
 const StyledScreen = styled.div`
 	background-color: var(--screen-bg);
@@ -11,7 +12,9 @@ const StyledScreen = styled.div`
 `;
 
 const Screen = () => {
-	return <StyledScreen>399,981</StyledScreen>;
+	const { equation } = useAppSelector((state) => state.equation);
+
+	return <StyledScreen>{equation}</StyledScreen>;
 };
 
 export default Screen;

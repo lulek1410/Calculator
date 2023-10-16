@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import NumberButton, { Button, StyledNumberButton } from "./NumberButton";
 import CalcButton from "./CalcButton";
+import { useAppDispatch } from "hooks/useAppDispatch";
+import { remove, reset, result, write } from "store/reducers/EquationSlice";
 
 const ButtonsGrid = styled.div`
 	padding: 26px 20px;
@@ -43,12 +45,14 @@ const ActionButton = styled(Button)<{ buttonType: ButtonType }>`
 const SeparatorButton = StyledNumberButton;
 
 const Keypad = () => {
+	const dispatch = useAppDispatch();
+
 	return (
 		<ButtonsGrid>
 			<NumberButton number={7} />
 			<NumberButton number={8} />
 			<NumberButton number={9} />
-			<ActionButton buttonType="del">
+			<ActionButton buttonType="del" onClick={() => dispatch(remove())}>
 				<div>DEL</div>
 			</ActionButton>
 			<NumberButton number={4} />
@@ -59,14 +63,14 @@ const Keypad = () => {
 			<NumberButton number={2} />
 			<NumberButton number={3} />
 			<CalcButton sign="-" />
-			<SeparatorButton>.</SeparatorButton>
+			<SeparatorButton onClick={() => dispatch(write(","))}>.</SeparatorButton>
 			<NumberButton number={0} />
 			<CalcButton sign="/" />
 			<CalcButton sign="x" />
-			<ActionButton buttonType="reset">
+			<ActionButton buttonType="reset" onClick={() => dispatch(reset())}>
 				<div>RESET</div>
 			</ActionButton>
-			<ActionButton buttonType="result">
+			<ActionButton buttonType="result" onClick={() => dispatch(result())}>
 				<div>=</div>
 			</ActionButton>
 		</ButtonsGrid>

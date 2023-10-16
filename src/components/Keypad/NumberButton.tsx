@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import { useAppDispatch } from "hooks/useAppDispatch";
+import { write } from "store/reducers/EquationSlice";
 
 export const Button = styled.button`
 	border: none;
@@ -21,8 +23,10 @@ interface NumberButtonProps {
 }
 
 const NumberButton = ({ number }: NumberButtonProps) => {
+	const dispatch = useAppDispatch();
+
 	return (
-		<StyledNumberButton>
+		<StyledNumberButton onClick={() => dispatch(write("" + number))}>
 			<div>{number}</div>
 		</StyledNumberButton>
 	);

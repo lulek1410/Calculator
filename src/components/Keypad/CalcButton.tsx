@@ -1,4 +1,6 @@
+import { useAppDispatch } from "hooks/useAppDispatch";
 import { StyledNumberButton } from "./NumberButton";
+import { write } from "store/reducers/EquationSlice";
 
 interface CalcButtonProps {
 	sign: "/" | "x" | "+" | "-";
@@ -7,7 +9,12 @@ interface CalcButtonProps {
 const StyledCalcButton = StyledNumberButton;
 
 const CalcButton = ({ sign }: CalcButtonProps) => {
-	return <StyledCalcButton>{sign}</StyledCalcButton>;
+	const dispatch = useAppDispatch();
+	return (
+		<StyledCalcButton onClick={() => dispatch(write(sign))}>
+			{sign}
+		</StyledCalcButton>
+	);
 };
 
 export default CalcButton;
