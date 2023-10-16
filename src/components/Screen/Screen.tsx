@@ -3,6 +3,7 @@ import { useAppSelector } from "hooks/useAppSelector";
 
 const StyledScreen = styled.div`
 	background-color: var(--screen-bg);
+	height: 102px;
 	padding: 32px 20px 23px 20px;
 	border-radius: 8px;
 
