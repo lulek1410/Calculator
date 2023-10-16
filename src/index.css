@@ -69,6 +69,15 @@
 	font-weight: 700;
 }
 
+body {
+	padding: 20px;
+	display: grid;
+	place-items: center;
+	min-height: 100vh;
+	overflow-x: hidden;
+	background-color: var(--main-bg);
+}
+
 * {
 	margin: 0;
 	padding: 0;
