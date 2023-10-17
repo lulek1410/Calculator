@@ -12,7 +12,7 @@ const ButtonsGrid = styled.div`
 	display: grid;
 	grid-template-rows: repeat(5, 1fr);
 	grid-template-columns: repeat(4, 1fr);
-	gap: max(min(25px, 2vmin), 14px) max(min(22px, 2vmin), 10px);
+	gap: clamp(14px, 1.5vmin, 25px) clamp(10px, 1.5vmin, 22px);
 `;
 
 type ButtonType = "del" | "reset" | "result";

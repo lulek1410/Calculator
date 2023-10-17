@@ -6,7 +6,7 @@ export const Button = styled.button`
 	border: none;
 	border-radius: 8px;
 	cursor: pointer;
-	padding: 18px min(max(2.5vw, 20px), 30px) 14px min(max(2.5vw, 20px), 30px);
+	padding: 18px clamp(20px, 2.5vw, 36px) 14px clamp(20px, 2.5vw, 36px);
 `;
 
 export const StyledNumberButton = styled(Button)`
