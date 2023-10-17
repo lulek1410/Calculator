@@ -2,20 +2,31 @@ import styled from "@emotion/styled";
 import { useAppSelector } from "hooks/useAppSelector";
 
 const StyledScreen = styled.div`
-	background-color: var(--screen-bg);
-	height: 102px;
-	padding: 32px 20px 23px 20px;
-	border-radius: 8px;
-
-	font-size: min(1.6rem, 9.5vmin);
-	text-align: end;
+	white-space: nowrap;
+	font-size: clamp(1.1rem, 4vmin, 1.6rem);
 	color: var(--text-screen);
+	overflow: hidden;
+	text-align: end;
+`;
+
+const ScreenWrapper = styled.div`
+	background-color: var(--screen-bg);
+	height: clamp(84px, 15vw, 89px);
+	width: clamp(302px, 50vw, 450px);
+	padding: 30px 20px 23px 20px;
+	border-radius: 8px;
 `;
 
 const Screen = () => {
-	const { equation } = useAppSelector((state) => state.equation);
+	const { currentNum, previousNum } = useAppSelector(
+		(state) => state.equation
+	);
 
-	return <StyledScreen>{equation}</StyledScreen>;
+	return (
+		<ScreenWrapper>
+			<StyledScreen>{currentNum ? currentNum : previousNum}</StyledScreen>
+		</ScreenWrapper>
+	);
 };
 
 export default Screen;

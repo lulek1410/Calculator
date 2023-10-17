@@ -1,29 +1,45 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice, current } from "@reduxjs/toolkit";
 
 const sign = "/x+-";
 
+type Operator = "/" | "x" | "-" | "+" | "";
+
 interface Equation {
-	equation: string;
-	isSignSet: boolean;
+	currentNum: string;
+	operator: Operator;
+	previousNum: string;
 }
 
 const initialState: Equation = {
-	equation: "",
-	isSignSet: false,
+	currentNum: "",
+	operator: "",
+	previousNum: "",
 };
 
 const isSign = (char: string) => {
 	return sign.indexOf(char) > -1;
 };
 
-const calculate = (equation: string): string => {
-	const [left, sign, right] = equation.replace(/,/gi, ".").split(" ");
+const formatResult = (result: number): string => {
+	const resultStr = result.toString().replace(/\./gi, ",");
+	if (resultStr.length > 12) {
+		return result
+			.toFixed(11 - resultStr.indexOf(","))
+			.toString()
+			.replace(/\./gi, ",");
+	}
+	return resultStr;
+};
+
+const calculate = (equation: Equation): number => {
+	const { currentNum, operator, previousNum } = equation;
+
 	const [leftNum, rightNum] = [
-		Number.parseFloat(left),
-		Number.parseFloat(right),
+		Number.parseFloat(previousNum.replace(/,/gi, ".")),
+		Number.parseFloat(currentNum.replace(/,/gi, ".")),
 	];
 	let result = NaN;
-	switch (sign) {
+	switch (operator) {
 		case "+":
 			result = leftNum + rightNum;
 			break;
@@ -36,7 +52,7 @@ const calculate = (equation: string): string => {
 		case "/":
 			result = leftNum / rightNum;
 	}
-	return result.toString().replace(/\./gi, ",");
+	return result;
 };
 
 const EquationSlice = createSlice({
@@ -44,37 +60,40 @@ const EquationSlice = createSlice({
 	initialState,
 	reducers: {
 		write: (state, { payload }: PayloadAction<string>) => {
-			if (isSign(payload)) {
-				const elementAtIndexMinusTwo = state.equation.at(-2);
-				if (elementAtIndexMinusTwo && isSign(elementAtIndexMinusTwo)) {
-					state.equation = state.equation.slice(0, -3);
-				} else if (state.isSignSet) {
-					state.equation = calculate(state.equation);
+			if (state.currentNum.length >= 12 && !isSign(payload)) {
+				alert("max character count is 12");
+			} else if (isSign(payload)) {
+				if (state.currentNum && state.previousNum && state.operator) {
+					state.previousNum = formatResult(calculate(state));
+					state.currentNum = "";
+					state.operator = payload as Operator;
+				} else if (state.currentNum.length === 0 && payload === "-") {
+					state.currentNum += payload;
 				} else {
-					state.isSignSet = true;
+					state.operator = payload as Operator;
+					[state.previousNum, state.currentNum] = [state.currentNum, ""];
 				}
-				state.equation += " " + payload + " ";
 			} else {
-				state.equation += payload;
+				state.currentNum += payload;
 			}
 		},
 		remove: (state) => {
-			const elementAtIndexMinusTwo = state.equation.at(-2);
-			if (elementAtIndexMinusTwo && isSign(elementAtIndexMinusTwo)) {
-				state.equation = state.equation.slice(0, -3);
-				state.isSignSet = false;
+			if (state.currentNum === "Infinity" || state.currentNum === "-Infinity") {
+				state.currentNum = "";
 			} else {
-				state.equation = state.equation.slice(0, -1);
+				state.currentNum = state.currentNum.slice(0, -1);
 			}
 		},
 		reset: (state) => {
-			state.equation = "";
-			state.isSignSet = false;
+			state.currentNum = "";
+			state.previousNum = "";
+			state.operator = "";
 		},
 		result: (state) => {
-			if (state.isSignSet && state.equation.at(-1) != " ") {
-				state.equation = calculate(state.equation);
-				state.isSignSet = false;
+			if (state.operator && state.previousNum && state.currentNum) {
+				state.currentNum = formatResult(calculate(state));
+				state.previousNum = "";
+				state.operator = "";
 			}
 		},
 	},
