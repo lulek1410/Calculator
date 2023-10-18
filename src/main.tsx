@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import App from "App.tsx";
 import "./index.css";
 import { Provider } from "react-redux";
 import { store } from "store/index.ts";
 import { Global, css } from "@emotion/react";
-import { Theme } from "store/reducers/ThemeSlice";
+import { Theme, setTheme } from "store/reducers/ThemeSlice";
 import { useAppSelector } from "hooks/useAppSelector";
+import { useAppDispatch } from "hooks/useAppDispatch";
 
 const themeStyles = (theme: Theme) => css`
 	body {
@@ -42,7 +43,18 @@ const themeStyles = (theme: Theme) => css`
 
 const ThemedApp = () => {
 	const { theme } = useAppSelector((state) => state.theme);
+	const dispatch = useAppDispatch();
 
+	useEffect(() => {
+		const isDarkTheme = window.matchMedia(
+			"(prefers-color-scheme: dark)"
+		).matches;
+		if (isDarkTheme) {
+			dispatch(setTheme("3"));
+		} else {
+			dispatch(setTheme("2"));
+		}
+	}, []);
 	return (
 		<>
 			<App />

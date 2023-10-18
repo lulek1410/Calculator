@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export type Theme = "1" | "2" | "3";
 
@@ -27,8 +27,11 @@ const ThemeSlice = createSlice({
 					break;
 			}
 		},
+		setTheme: (state, { payload }: PayloadAction<Theme>) => {
+			state.theme = payload;
+		},
 	},
 });
 
-export const { nextTheme } = ThemeSlice.actions;
+export const { nextTheme, setTheme } = ThemeSlice.actions;
 export default ThemeSlice.reducer;
