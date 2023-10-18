@@ -67,11 +67,17 @@ const EquationSlice = createSlice({
 					state.previousNum = formatResult(calculate(state));
 					state.currentNum = "";
 					state.operator = payload as Operator;
-				} else if (state.currentNum.length === 0 && payload === "-") {
+				} else if (
+					state.currentNum.length === 0 &&
+					!state.previousNum &&
+					payload === "-"
+				) {
 					state.currentNum += payload;
 				} else {
 					state.operator = payload as Operator;
-					[state.previousNum, state.currentNum] = [state.currentNum, ""];
+					if (!state.previousNum) {
+						[state.previousNum, state.currentNum] = [state.currentNum, ""];
+					}
 				}
 			} else {
 				state.currentNum += payload;

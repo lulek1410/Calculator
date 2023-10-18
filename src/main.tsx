@@ -29,6 +29,7 @@ const themeStyles = (theme: Theme) => css`
 		--text-key: var(--text-key-${theme});
 		--text-result: var(--text-result-${theme});
 		--text-screen: var(--text-screen-${theme});
+		--text-preview: var(--text-preview-${theme});
 
 		padding: 20px;
 		display: grid;

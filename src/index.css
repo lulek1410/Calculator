@@ -21,6 +21,7 @@
 	--text-key-1: hsl(221, 14%, 31%);
 	--text-result-1: var(--white);
 	--text-screen-1: var(--white);
+	--text-preview-1: hsl(210, 8%, 45%);
 
 	/* Theme 2 */
 	--main-bg-2: hsl(0, 0%, 90%);
@@ -42,6 +43,7 @@
 	--text-key-2: hsl(60, 10%, 19%);
 	--text-result-2: var(--white);
 	--text-screen-2: hsl(60, 10%, 19%);
+	--text-preview-2: hsl(60, 10%, 40%);
 
 	/* Theme 3 */
 	--main-bg-3: hsl(268, 75%, 9%);
@@ -63,6 +65,7 @@
 	--text-key-3: hsl(52, 100%, 62%);
 	--text-result-3: hsl(198, 20%, 13%);
 	--text-screen-3: hsl(52, 100%, 62%);
+	--text-preview-3: hsl(52, 55%, 35%);
 
 	font-size: 32px;
 	font-family: "League Spartan", sans-serif;

@@ -15,16 +15,30 @@ const ScreenWrapper = styled.div`
 	width: clamp(302px, 50vw, 450px);
 	padding: 30px 20px 23px 20px;
 	border-radius: 8px;
+
+	position: relative;
+`;
+
+const CalcPreview = styled.div`
+	font-size: clamp(0.6rem, 4vmin, 0.75rem);
+	color: var(--text-preview);
+
+	position: absolute;
+	top: 5px;
+	right: 20px;
 `;
 
 const Screen = () => {
-	const { currentNum, previousNum } = useAppSelector(
+	const { currentNum, operator, previousNum } = useAppSelector(
 		(state) => state.equation
 	);
 
 	return (
 		<ScreenWrapper>
-			<StyledScreen>{currentNum ? currentNum : previousNum}</StyledScreen>
+			<CalcPreview aria-label="preview">
+				{previousNum && `${previousNum} ${operator}`}
+			</CalcPreview>
+			<StyledScreen>{currentNum}</StyledScreen>
 		</ScreenWrapper>
 	);
 };
