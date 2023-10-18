@@ -13,14 +13,18 @@ This is a solution to the [Calculator app challenge on Frontend Mentor](https://
 ## Overview
 
 ### Screenshot
+#### Theme 1
+![Theme 1](images/theme-1.png)
 
-![Theme 1](./images/theme-1.jpg)
-![Theme 2](./images/theme-2.jpg)
-![Theme 3](./images/theme-3.jpg)
+#### Theme 2
+![Theme 2](images/theme-2.png)
+
+#### Theme 3
+![Theme 3](images/theme-3.png)
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [gh-pages](https://your-live-site-url.com)
 
 ### Built with
 
